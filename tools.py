@@ -13,6 +13,4 @@ search_tool = SerperDevTool()
 
 scrape_tool = ScrapeWebsiteTool()
 
-github_search = GithubSearchTool()
-
 code_interpreter_tool = CodeInterpreterTool()

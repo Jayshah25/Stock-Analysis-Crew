@@ -4,12 +4,10 @@ from tools import (search_indicators,
                    search_tool,
                    scrape_tool,
                    code_interpreter_tool,
-                   github_search)
+                   )
 
-class StockAnalysisAgents:
 
-    def data_engineer_agent(self):
-        return Agent(
+data_engineer_agent= Agent(
             role="Data Engineer",
             goal="Validate the inputs provided by the user. For example, make sure "
             "the  provided company name actually exists, start date and end date are "
@@ -21,8 +19,7 @@ class StockAnalysisAgents:
             verbose=True,
             tools = [search_tool, scrape_tool, code_interpreter_tool])
 
-    def technical_analysis_agent(self):
-        return Agent(
+technical_analysis_agent = Agent(
             role="Senior Analyst",
             goal="For the provided company stock data, perform technical analysis using "
             "various important technical indicators. In the case, you realize that the user inputs "
@@ -31,27 +28,29 @@ class StockAnalysisAgents:
             "technical indicators to analyze a stock along with expertise in python, web scraping and math.",
             verbose=True,
             allow_delegation=True,
-            tools=[search_pandas_ta, search_indicators, search_tool, scrape_tool, code_interpreter_tool, github_search]
+            tools=[search_pandas_ta, search_indicators, search_tool, scrape_tool, code_interpreter_tool, ]
             )
 
-    def nlp_researcher(self):
-        return Agent(
+nlp_researcher_agent = Agent(
             role="Senior NLP Researcher",
-            goal="Analyze any given documents for fundamental analysis of a given company. "
-            "Also, analyze news articles to understand the recent public sentiment about the company."
+            goal="Analyze any given documents in the 'inhouse data' folder for fundamental analysis and sentiment analysis "
+            "of a given company. Also, analyze news articles to understand the recent public sentiment about the company. "
             "In the case, you realize that the user inputs are incorrect, "
             "respond with 'The user inputs are not correct'.",
             backstory="As an experienced NLP researcher, this agent specializes in text "
             "summarization and sentiment analysis.",
             verbose=True,
             allow_delegation=True,
-            tools=[search_tool, scrape_tool, code_interpreter_tool, github_search]
+            tools=[search_tool, scrape_tool, code_interpreter_tool, ]
             )
 
-    def risk_analysis_agent(self):
-        return Agent(
+risk_analysis_agent = Agent(
             role="Senior Risk Analyst",
-            goal=" ",
+            goal="On the basis of outputs from other agents, prepare a detailed report "
+            "on the possible risks associated with long term or short term investments "
+            "in this stock for the given time period or for future. "
+            "In the case, you realize that the user inputs are incorrect, "
+            "respond with 'The user inputs are not correct'.",
             backstory="Specializing is risk assesment models and market dynamics, "
             "this agent is a risk analyst.",
             verbose=True,
@@ -59,8 +58,7 @@ class StockAnalysisAgents:
             tools=[search_tool, scrape_tool]
             )
 
-    def advisor_agent(self):
-        return Agent(
+advisor_agent = Agent(
             role="Senior Finance Advisor",
             goal="On the basis of the outputs from the other agents, prepare a final report "
             "of the technical and fundamental analysis along with the market sentiment associated to the "
