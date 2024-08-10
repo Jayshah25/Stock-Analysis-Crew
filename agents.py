@@ -7,7 +7,8 @@ from tools import (search_indicators,
                    )
 
 
-data_engineer_agent= Agent(
+
+data_engineer_agent = Agent(
             role="Data Engineer",
             goal="Validate the inputs provided by the user. For example, make sure "
             "the  provided company name actually exists, start date and end date are "

@@ -1,39 +1,32 @@
 import warnings
 warnings.filterwarnings('ignore')
 
-from crewai import Crew, Process
-from langchain_openai import ChatOpenAI
-from agents import (data_engineer_agent,
-                    technical_analysis_agent,
-                    nlp_researcher_agent,
-                    risk_analysis_agent,
-                    advisor_agent)
-from tasks import (gather_data,
-                   technical_analysis,
-                   fundamental_and_sentimental_analysis,
-                   risk_analysis,
-                   investment_advise)
 import streamlit as st
 
 from pathlib import Path
 import datetime
 import os
+import sys
+import io
 
 st.subheader(":robot_face: Stock Analysis Crew")
 st.caption("A Multi-Agentic AI system created by [Jay Shah](https://www.linkedin.com/in/jay-shah-qml) with :heart:")
 
+os.environ["OPENAI_MODEL_NAME"] = 'gpt-3.5-turbo'
 
 with st.sidebar:
     
     with st.expander(label='User Inputs', expanded=False):
 
         OPENAI_API_KEY = st.text_input("OPENAI API KEY", key="key1", type="password")
+        os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
         SERPER_API_KEY = st.text_input("SERPER API KEY", key="key2", type="password",help="Allows the Agents to do Google Search")
+        os.environ["SERPER_API_KEY"] = SERPER_API_KEY
 
         temperature = st.slider(label='Temperature',min_value=0.0,max_value=2.0,value=0.0,step=0.1,help='Lesser value means less randomness in the output and makes output reproducible.')
         
-        company = st.text_input(label='Company Name',value='Deloitte')
+        company = st.text_input(label='Company Name',value='AAPL')
 
         start_date = st.date_input(label='Start Date',value=datetime.date(2024,1,1))
 
@@ -44,8 +37,9 @@ with st.sidebar:
         
         if uploaded_files is not None:
             try:
+                SAVE_FOLDER = r'inhouse data'
                 for uploaded_file in uploaded_files:
-                    save_path = Path(r'inhouse data',uploaded_file.name)
+                    save_path = Path(SAVE_FOLDER,uploaded_file.name)
                     with open(save_path,'wb') as w:
                         w.write(uploaded_file.getvalue())
             except Exception as e:
@@ -69,31 +63,39 @@ if reset_button:
 
 if analyze_button:
 
-    with st.spinner('Waiting for output...'):
+    if len(OPENAI_API_KEY)>0 and len(SERPER_API_KEY)>0:
 
-        stock_analysis_crew = Crew(
-                                tasks=[gather_data,
-                                       technical_analysis,
-                                       fundamental_and_sentimental_analysis,
-                                       risk_analysis,
-                                       investment_advise],
-                                agents=[data_engineer_agent,
-                                        technical_analysis_agent,
-                                        nlp_researcher_agent,
-                                        risk_analysis_agent,
-                                        advisor_agent],
-                                manager_agent=ChatOpenAI(model="gpt-3.5-turbo", 
-                                                            temperature=temperature),
-                                process=Process.hierarchical,
-                                verbose=True
-                                )
-        
-        inputs = {
-            'stock': company,
-            'start_date': str(start_date),
-            'end_date' : str(end_date)
-        }
+        with st.spinner('Waiting for output...'):
 
-        results = stock_analysis_crew.kickoff(inputs=inputs)
+            try:
 
-        st.markdown(results)
+                from stock_analysis_crew import run_crew
+                            
+                inputs = {
+                    'stock': company,
+                    'start_date': str(start_date),
+                    'end_date' : str(end_date),
+                    'data_folder':SAVE_FOLDER
+                }
+
+                original_stdout = sys.stdout
+                sys.stdout = io.StringIO()
+
+                result = run_crew(inputs=inputs,temperature=temperature)
+
+                verbose = sys.stdout.getvalue()
+                sys.stdout = original_stdout
+
+                with st.expander(label='Verbose',expanded=False):
+                    st.markdown(verbose)
+
+                with st.expander(label='Final Result',expanded=True):
+                    st.markdown(result)
+
+            except Exception as e:
+
+                st.error(e)
+
+    else:
+
+        st.info('Please enter your OPENAI_API_KEY and SERPER_API_KEY!')
