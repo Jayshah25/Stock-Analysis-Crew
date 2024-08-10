@@ -33,7 +33,7 @@ This project implements a "Stock Analysis Crew" Multi-Agentic AI system for the 
 
 As seen in the image, this system has 5 agents (and a manager agent). The 5 agents are Data Engineer, Technical Analyst, NLP Researcher, Risk Analyst and Advisor. The role of each agent in this crew is listed below:
 
-* Data Engineer - The goal of this agent is to validate the user input and download stock prices of the provided company in the given timeframe as a CSV file. The `data.csv` file available in the repository is created by this agent. This allows the user to verify the data from their end that is used by the next agents for various tasks.
+* Data Engineer - The goal of this agent is to validate the user input and download stock prices of the provided company in the given timeframe as a CSV file. The `data.csv` file available in the repository is created by this agent. This allows the user to verify the data from their end that is used by the next agents for various tasks. Also, the `db` folder in the repository is created by Agents.
 
 * Technical Analyst - The goal of this agent is to do the technical analysis on the `data.csv` file created by the Data Engineer agent. This agent access to the files in the `instructions` folder that has information regarding important technical indicators and the use of `pandas-ta` python framework. This is an attempt to mimic a real world situation where teams would like to provide additional instructions to the agent.
 
@@ -73,7 +73,7 @@ After you have followed the steps described in the previous section, in the case
 
 ![Initial Setup](images/initial_setup.png)
 
-It is an easy to use web app where the User Inputs dropdown should be used to provide all the user inputs required for analysis. Once the input is given, press the  `Analyze` button and the results will be displayed in the workspace area. The output shall have two dropdowns - Verbose and Final Result. The Verbose dropdown displays the entire verbose and actions that the system took to reach the final answer. The Final Result shows the final answer. Let's understand the user input dropdown a little more!
+It is an easy to use web app where the User Inputs dropdown should be used to provide all the user inputs required for analysis. Once the input is given, press the  `Analyze` button and the results will be displayed in the workspace area. The output shall have two dropdowns - Verbose and Final Result. The Verbose dropdown displays the entire verbose and actions that the system took to reach the final answer. The Final Result shows the final answer. You can use the reset button to begin a new analysis. Let's understand the user input dropdown a little more!
 
 ![User Inputs](images/user_input_section.png)
 
