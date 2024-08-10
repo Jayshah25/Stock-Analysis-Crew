@@ -4,13 +4,13 @@ This project implements a "Stock Analysis Crew" Multi-Agentic AI system using Cr
 
 ## Table of Contents
 
-* [Demo](##Demo)
+* [Demo](#demo)
 * [What are AI Agents?](#what-are-ai-agents)
 * [What are Multi-Agentic AI Systems?](#what-are-multi-agentic-ai-systems)
 * [Stock Analysis Crew](#stock-analysis-crew)
 * [How to replicate?](#how-to-replicate)
 * [How to use the Streamlit App?](#how-to-use-the-streamlit-app)
-* [References](#refernces)
+* [References](#references)
 
 ## Demo
 [![Demo](images/StockAnalysisCrew_thumbnail.png)](http://www.youtube.com/watch?v=acD6Xzys4pU "Video Title")
@@ -29,7 +29,7 @@ A Multi-Agentic AI system attempts to mimic a team of humans that come together 
 
 This project implements a "Stock Analysis Crew" Multi-Agentic AI system for the analysis of a stock in a given period. The goal of the crew is to analyze the long term and short term performance performance of the stock in the given period, and also provide insights on a possible future investment. 
 
-![Crew](images/Stock-Analysis-Crew.png)
+![Crew](images/stock_analysis_crew.png)
 
 As seen in the image, this system has 5 agents (and a manager agent). The 5 agents are Data Engineer, Technical Analyst, NLP Researcher, Risk Analyst and Advisor. The role of each agent in this crew is listed below:
 
@@ -66,6 +66,26 @@ The following steps can help you to replicate this project and run the streamlit
 5. After successfull installation, run the following command to launch the streamlit app
 
   `streamlit run app.py`
+
+## How to use the Streamlit app?
+
+After you have followed the steps described in the previous section, in the case of successful installation, a new window with the web app should pop up and it should look like the image shown below.
+
+![Initial Setup](images/initial_setup.png)
+
+It is an easy to use web app where the User Inputs dropdown should be used to provide all the user inputs required for analysis. Once the input is given, press the  `Analyze` button and the results will be displayed in the workspace area. The output shall have two dropdowns - Verbose and Final Result. The Verbose dropdown displays the entire verbose and actions that the system took to reach the final answer. The Final Result shows the final answer. Let's understand the user input dropdown a little more!
+
+![User Inputs](images/user_input_section.png)
+
+1. OPENAI API KEY -> The key is required to run the OPENAI 'gpt-3.5-turbo' and embedding models.
+
+2. SERPER API KEY -> The key is required to access the SERPER API that allows google search. A simple signup on the website will give you free credits.
+
+3. Temperature -> This parameter controls the reproducibility of the OPENAI Model outputs. A lesser value means less randomness in the output and makes output reproducible.
+
+4. User Input -> Provide Stock Name, Start Date and End Date for the analysis.
+
+5. File Upload -> Upload any relevant files that can assist in the analysis. This represents the in-house data that companies have.  
 
 ## References
 
