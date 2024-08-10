@@ -5,12 +5,12 @@ This project implements a "Stock Analysis Crew" Multi-Agentic AI system using Cr
 ## Table of Contents
 
 * [Demo](##Demo)
-* [What are AI Agents?](##What-are-AI-Agents?)
-* [What are Multi-Agentic AI Systems?](##What-are-Multi-Agentic-AI-Systems?)
-* [Stock Analysis Crew](##Stock-Analysis-Crew)
-* [How to replicate?](##How-to-replicate?)
-* [How to use the Streamlit App?](##How-to-use-the-Streamlit-App?)
-* [References](##Refernces)
+* [What are AI Agents?](#what-are-ai-agents)
+* [What are Multi-Agentic AI Systems?](#what-are-multi-agentic-ai-systems)
+* [Stock Analysis Crew](#stock-analysis-crew)
+* [How to replicate?](#how-to-replicate)
+* [How to use the Streamlit App?](#how-to-use-the-streamlit-app)
+* [References](#refernces)
 
 ## Demo
 [![Demo](images/StockAnalysisCrew_thumbnail.png)](http://www.youtube.com/watch?v=acD6Xzys4pU "Video Title")
