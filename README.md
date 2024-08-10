@@ -1,6 +1,6 @@
 # Stock-Analysis-Crew
 
-This project implements a "Stock Analysis Crew" Multi-Agentic AI system using CrewAI framework. It has a streamlit webapp too that enables a direct interaction with the system.
+This project implements a "Stock Analysis Crew" Multi-Agentic AI system using CrewAI framework. It has a streamlit webapp too that enables a direct interaction with the system. A deployed version of the Streamlit App is available [here](https://stock-analysis-crew-a2pfqfwhbvgvvljgrs26qs.streamlit.app/).
 
 ## Table of Contents
 
@@ -69,7 +69,7 @@ The following steps can help you to replicate this project and run the streamlit
 
 ## How to use the Streamlit app?
 
-After you have followed the steps described in the previous section, in the case of successful installation, a new window with the web app should pop up and it should look like the image shown below.
+Although, a deployed version of the Streamlit app is available [here](https://stock-analysis-crew-a2pfqfwhbvgvvljgrs26qs.streamlit.app/), you might like to have a local setup for experimentation. After you have followed the steps described in the previous section, in the case of successful installation, a new window with the web app should pop up and it should look like the image shown below.
 
 ![Initial Setup](images/initial_setup.png)
 
