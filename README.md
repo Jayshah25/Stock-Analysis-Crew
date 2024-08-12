@@ -33,7 +33,7 @@ This project implements a "Stock Analysis Crew" Multi-Agentic AI system for the 
 
 As seen in the image, this system has 5 agents (and a manager agent). The 5 agents are Data Engineer, Technical Analyst, NLP Researcher, Risk Analyst and Advisor. The role of each agent in this crew is listed below:
 
-* Data Engineer - The goal of this agent is to validate the user input and download stock prices of the provided company in the given timeframe as a CSV file. The `data.csv` file available in the repository is created by this agent. This allows the user to verify the data from their end that is used by the next agents for various tasks. Also, the `db` folder in the repository is created by Agents.
+* Data Engineer - The goal of this agent is to validate the user input and download stock prices of the provided company in the given timeframe as a CSV file. The `data.csv` file can be created by this agent alongside a `db` folder containing sql files. This allows the user to verify the data from their end that is used by the next agents for various tasks. 
 
 * Technical Analyst - The goal of this agent is to do the technical analysis on the `data.csv` file created by the Data Engineer agent. This agent access to the files in the `instructions` folder that has information regarding important technical indicators and the use of `pandas-ta` python framework. This is an attempt to mimic a real world situation where teams would like to provide additional instructions to the agent.
 
