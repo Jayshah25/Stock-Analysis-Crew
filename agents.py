@@ -13,7 +13,8 @@ data_engineer_agent = Agent(
             goal="Validate the inputs provided by the user. For example, make sure "
             "the  provided company name actually exists, start date and end date are "
             "not the same and so on. After Validation, download stock prices of the company " 
-            "for the provided period as a Pandas DataFrame. In the case of incorrect user inputs, respond as "
+            "for the provided period as a Pandas DataFrame. Don't install db-sqlite3 python package."
+            "In the case of incorrect user inputs, respond as "
             "'The user inputs are not correct'.",
             backstory="Specializing in the finance markets, this agent is an experienced "
             "data engineer with expertise in python, Web Scraping, Microsoft Excel, and overall Data Preparation.",
